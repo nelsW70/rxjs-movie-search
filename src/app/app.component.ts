@@ -79,4 +79,8 @@ export class AppComponent implements OnInit {
       { params: PARAMS.set('search', term) }
     );
   }
+
+  clearSearch() {
+    console.log('clicked');
+  }
 }

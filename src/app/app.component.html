@@ -1,7 +1,8 @@
 <div class="container">
-  <h1>Angular Search using Debounce in RXJS 6</h1>
-  <div class="ui input">
+  <h1>Angular Search using debounceTime in RxJS 6</h1>
+  <div class="ui icon input">
     <input type="text" #movieSearchInput placeholder="Type any movie name" />
+    <i class="search link icon close" (click)="clearSearch()"></i>
   </div>
 
   <div *ngIf="isSearching">
