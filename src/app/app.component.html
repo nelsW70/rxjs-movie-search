@@ -8,7 +8,7 @@
   <div *ngIf="isSearching">
     <h4>Searching ...</h4>
   </div>
-  <div class="row">
+  <div>
     <ng-container *ngIf="apiResponse.Response === 'False'; else elseTemplate">
       <div class="ui negative message">
         <div class="header">{{ apiResponse.Error }} Please search again.</div>
