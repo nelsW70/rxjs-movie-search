@@ -61,7 +61,6 @@ export class AppComponent implements OnInit {
             console.log('res', res);
             this.isSearching = false;
             this.apiResponse = res;
-            console.log(this.apiResponse);
           },
           (err) => {
             this.isSearching = false;
