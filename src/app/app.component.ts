@@ -81,6 +81,8 @@ export class AppComponent implements OnInit {
   }
 
   clearSearch() {
-    console.log('clicked');
+    this.apiResponse = [];
+    this.movieSearchInput.nativeElement.value = '';
+    this.isSearching = false;
   }
 }
