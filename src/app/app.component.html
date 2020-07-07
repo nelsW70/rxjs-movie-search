@@ -1,20 +1,21 @@
 <div class="container">
-  <h3>Angular Search using debounceTime in RxJS 6</h3>
-  <div class="ui icon input">
-    <input type="text" #movieSearchInput placeholder="Type any movie name" />
-    <i class="search link icon close" (click)="clearSearch()"></i>
-  </div>
+  <header>
+    <h3>Angular Search using debounceTime in RxJS 6</h3>
+    <div class="ui icon input">
+      <input type="text" #movieSearchInput placeholder="Type any movie name" />
+      <i class="search link icon close" (click)="clearSearch()"></i>
+    </div>
 
-  <div *ngIf="isSearching">
-    <h4>Searching ...</h4>
-  </div>
-  <div>
+    <div *ngIf="isSearching">
+      <h4>Searching ...</h4>
+    </div>
     <ng-container *ngIf="apiResponse.Response === 'False'; else elseTemplate">
       <div class="ui negative message">
         <div class="header">{{ apiResponse.Error }} Please search again.</div>
       </div>
     </ng-container>
-
+  </header>
+  <section>
     <ng-template #elseTemplate>
       <div class="ui cards">
         <div class="ui card" *ngFor="let movie of apiResponse.Search">
@@ -35,5 +36,5 @@
         </div>
       </div>
     </ng-template>
-  </div>
+  </section>
 </div>
