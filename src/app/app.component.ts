@@ -75,7 +75,7 @@ export class AppComponent implements OnInit {
       return of([]);
     }
     return this.httpClient.get(
-      'http://www.omdbapi.com/?s=' + term + '&apikey=' + APIKEY,
+      'https://www.omdbapi.com/?s=' + term + '&apikey=' + APIKEY,
       { params: PARAMS.set('search', term) }
     );
   }
