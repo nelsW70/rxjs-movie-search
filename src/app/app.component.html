@@ -1,8 +1,14 @@
 <div class="container">
   <header>
-    <h3>Angular Search using debounceTime in RxJS 6</h3>
+    <h1>Angular Search using debounceTime in RxJS 6</h1>
     <div class="ui icon input">
-      <input type="text" #movieSearchInput placeholder="Type any movie name" />
+      <label for="searchMovies" class="visuallyhidden">Search movies</label>
+      <input
+        type="text"
+        #movieSearchInput
+        id="searchMovies"
+        placeholder="Type any movie name"
+      />
       <i class="search link icon close" (click)="clearSearch()"></i>
     </div>
 
@@ -21,12 +27,18 @@
         <div class="ui card" *ngFor="let movie of apiResponse.Search">
           <ng-container *ngIf="movie.Poster !== 'N/A'">
             <div class="image">
-              <img src="{{ movie.Poster }}" alt="movie poster" />
+              <img
+                src="{{ movie.Poster }}"
+                alt="poster for {{ movie.Title }}"
+              />
             </div>
           </ng-container>
           <ng-container *ngIf="movie.Poster === 'N/A'">
             <div class="image">
-              <img src="assets/images/default.png" alt="movie poster" />
+              <img
+                src="assets/images/default.png"
+                alt="poster for {{ movie.Title }}"
+              />
             </div>
           </ng-container>
           <div class="content">
