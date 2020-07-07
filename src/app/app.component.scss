@@ -1,0 +1,10 @@
+.container {
+  margin: 50px;
+
+  .ui {
+    &.cards,
+    &.negative {
+      margin-top: 1rem;
+    }
+  }
+}

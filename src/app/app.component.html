@@ -1,72 +1,38 @@
-<div style="margin: 50px;">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h1>Angular Search using Debounce in RXJS 6</h1>
+<div class="container">
+  <h1>Angular Search using Debounce in RXJS 6</h1>
+  <div class="ui input">
+    <input type="text" #movieSearchInput placeholder="Type any movie name" />
+  </div>
 
-        <div class="ui input">
-          <input
-            type="text"
-            #movieSearchInput
-            placeholder="Type any movie name"
-          />
-        </div>
+  <div *ngIf="isSearching">
+    <h4>Searching ...</h4>
+  </div>
+  <div class="row">
+    <ng-container *ngIf="apiResponse.Response === 'False'; else elseTemplate">
+      <div class="ui negative message">
+        <div class="header">{{ apiResponse.Error }} Please search again.</div>
       </div>
-    </div>
-    <div class="row" *ngIf="isSearching">
-      <div class="col-12 text-center">
-        <h4>Searching ...</h4>
-      </div>
-    </div>
-    <div class="row">
-      <ng-container *ngIf="apiResponse.Response === 'False'; else elseTemplate">
-        <div class="col-12 text-center">
-          <div class="alert alert-danger" role="alert">
-            {{ apiResponse.Error }}
+    </ng-container>
+
+    <ng-template #elseTemplate>
+      <div class="ui cards">
+        <div class="ui card" *ngFor="let movie of apiResponse.Search">
+          <ng-container *ngIf="movie.Poster !== 'N/A'">
+            <div class="image">
+              <img src="{{ movie.Poster }}" alt="movie poster" />
+            </div>
+          </ng-container>
+          <ng-container *ngIf="movie.Poster === 'N/A'">
+            <div class="image">
+              <img src="assets/images/default.png" alt="movie poster" />
+            </div>
+          </ng-container>
+          <div class="content">
+            <div class="header">{{ movie.Title }}</div>
+            <div class="description">Year: {{ movie.Year }}</div>
           </div>
         </div>
-      </ng-container>
-
-      <ng-template #elseTemplate>
-        <!-- <div class="col-3" *ngFor="let movie of apiResponse.Search"> -->
-        <!-- <div class="card" style="margin: 5px;">
-            <ng-container *ngIf="movie.Poster !== 'N/A'">
-              <img class="card-img-top" src="{{ movie.Poster }}" />
-            </ng-container>
-            <ng-container *ngIf="movie.Poster === 'N/A'">
-              <img
-                class="card-img-top"
-                src="assets/images/120px-No_image_available.svg.png"
-              />
-            </ng-container>
-            <div class="card-body">
-              <h5 class="card-title">{{ movie.Title }}</h5>
-              <p class="card-text">Year: {{ movie.Year }}</p>
-            </div>
-          </div> -->
-
-        <div class="ui cards">
-          <div class="ui card" *ngFor="let movie of apiResponse.Search">
-            <ng-container *ngIf="movie.Poster !== 'N/A'">
-              <div class="image">
-                <img src="{{ movie.Poster }}" />
-              </div>
-            </ng-container>
-            <ng-container *ngIf="movie.Poster === 'N/A'">
-              <div class="image">
-                <img src="assets/images/default.png" />
-              </div>
-            </ng-container>
-            <div class="content">
-              <a class="header">{{ movie.Title }}</a>
-              <div class="meta">
-                <span class="date">Year: {{ movie.Year }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- </div> -->
-      </ng-template>
-    </div>
+      </div>
+    </ng-template>
   </div>
 </div>
