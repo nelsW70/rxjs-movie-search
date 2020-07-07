@@ -1,6 +1,10 @@
 .container {
   margin: 50px;
 
+  h3 {
+    font-weight: normal;
+  }
+
   .ui {
     &.cards,
     &.negative {
