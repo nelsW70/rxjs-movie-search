@@ -46,9 +46,9 @@ export class AppComponent implements OnInit {
           return event.target.value;
         }),
         // if character length greater then 2
-        filter((res) => res.length > 2),
+        filter((res) => res.length >= 2),
         // Time in milliseconds between key events
-        debounceTime(1000),
+        debounceTime(350),
         // If previous query is diffent from current
         distinctUntilChanged()
         // subscription for response
