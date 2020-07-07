@@ -5,6 +5,9 @@
     &.cards,
     &.negative {
       margin-top: 1rem;
+      &.message {
+        width: fit-content;
+      }
     }
   }
 }
