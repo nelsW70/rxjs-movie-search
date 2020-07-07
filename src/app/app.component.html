@@ -18,9 +18,7 @@
       </div>
     </div>
     <div class="row">
-      <ng-container
-        *ngIf="apiResponse['Response'] == 'False'; else elseTemplate"
-      >
+      <ng-container *ngIf="apiResponse.Response === 'False'; else elseTemplate">
         <div class="col-12 text-center">
           <div class="alert alert-danger" role="alert">
             {{ apiResponse['Error'] }}
@@ -29,12 +27,16 @@
       </ng-container>
 
       <ng-template #elseTemplate>
-        <div class="col-3" *ngFor="let movie of apiResponse['Search']">
+        <div class="col-3" *ngFor="let movie of apiResponse.Search">
           <div class="card" style="margin: 5px;">
-            <img class="card-img-top" src="{{ movie['Poster'] }}" />
+            <img
+              *ngIf="movie.Poster !== 'N/A'"
+              class="card-img-top"
+              src="{{ movie.Poster }}"
+            />
             <div class="card-body">
-              <h5 class="card-title">{{ movie['Title'] }}</h5>
-              <p class="card-text">Year: {{ movie['Year'] }}</p>
+              <h5 class="card-title">{{ movie.Title }}</h5>
+              <p class="card-text">Year: {{ movie.Year }}</p>
             </div>
           </div>
         </div>

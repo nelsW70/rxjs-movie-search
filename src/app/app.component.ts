@@ -47,13 +47,10 @@ export class AppComponent implements OnInit {
         }),
         // if character length greater then 2
         filter((res) => res.length > 2),
-
         // Time in milliseconds between key events
         debounceTime(1000),
-
         // If previous query is diffent from current
         distinctUntilChanged()
-
         // subscription for response
       )
       .subscribe((text: string) => {
@@ -64,6 +61,7 @@ export class AppComponent implements OnInit {
             console.log('res', res);
             this.isSearching = false;
             this.apiResponse = res;
+            console.log(this.apiResponse);
           },
           (err) => {
             this.isSearching = false;
